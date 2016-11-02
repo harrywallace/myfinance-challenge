@@ -23,7 +23,7 @@ gulp.task('serve', function() {
     spawn('python', [path.join(config.paths.src, 'manage.py'), 'runserver', config.serve.browserSync.proxy, '--insecure'], { stdio: 'inherit' });
   }
   else {
-    spawn('python', [path.join(config.paths.build, 'manage.py'), 'runserver', config.serve.browserSync.proxy, '--insecure', '--settings=project.settings.prod'], { stdio: 'inherit' });
+    spawn('python', [path.join(config.paths.build, 'manage.py'), 'runserver', config.serve.browserSync.proxy, '--insecure', '--settings=app.settings.prod'], { stdio: 'inherit' });
   }
 
   browserSync(config.serve.browserSync);
