@@ -17,10 +17,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 # URL config file.
-ROOT_URLCONF = 'project.urls'
+ROOT_URLCONF = 'app.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'project.wsgi.application'
+WSGI_APPLICATION = 'app.wsgi.application'
 
 # Installed apps.
 INSTALLED_APPS = (

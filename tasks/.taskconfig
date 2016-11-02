@@ -43,7 +43,7 @@ const patterns = {
  * Common paths used throughout the Gulp pipeline.
  */
 const paths = {
-  src: path.join(__dirname, '../', 'app'),
+  src: path.join(__dirname, '../', 'productscout'),
   tmp: path.join(__dirname, '../', '.tmp'),
   build: path.join(__dirname, '../', 'build')
 };

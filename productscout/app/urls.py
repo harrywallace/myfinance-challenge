@@ -17,10 +17,10 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from django.views.generic.base import TemplateView
-import project.views
+import app.views
 
 urlpatterns = [
   url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
   url(r'^admin/', admin.site.urls),
-  url(r'^$', project.views.index),
+  url(r'^$', app.views.index),
 ]
