@@ -39,14 +39,6 @@ $ createdb --owner username dbname
 $ exit
 ```
 
-Configure MySQL if needed:
-```
-$ mysql_secure_installation
-$ mysql --user=root --password={password}
-$ mysql> create database {db_name};
-$ mysql> quit;
-```
-
 Update environment variables in ```{virtualenv_path}/bin/activate``` with new database configs.
 
 Apply initial migration:
@@ -71,124 +63,6 @@ $ npm run prod
 ```$ npm run prod```: Builds the entire project in production.
 
 All tasks are broken into micro Gulp tasks, check out the ```tasks``` folder for more details. Also see ```tasks/.taskconfig``` for more custom flags such as ```--skip-js-min```, ```--skip-css-min```, etc.
-
-## Cloud Setup (Linux)
-
-### Updating APT Packages
-
-```
-$ sudo apt-get update
-```
-
-### Installing ```git```
-
-```
-$ sudo apt-get install git-core
-```
-
-### Installing ```upstart```
-
-```
-$ sudo apt-get install upstart
-```
-Yes, replace ```sysvinit```
-
-### Installing ```nvm``` Globally
-
-Install ```nvm``` (see [https://github.com/xtuple/nvm](https://github.com/xtuple/nvm)):
-```
-$ sudo wget -qO- https://raw.githubusercontent.com/xtuple/nvm/master/install.sh | sudo bash
-```
-
-Install preferred ```node``` version:
-```
-$ nvm install x.xx.x
-```
-
-### Installing ```python```/```pip```
-
-```
-$ sudo apt-get install python-pip python-virtualenv python-dev build-essential
-```
-
-### Installing PostgreSQL
-
-```
-$ sudo apt-get install libpq-dev python-dev python-psycopg2
-$ sudo apt-get install postgresql postgresql-contrib
-```
-
-### Installing MySQL
-
-```
-$ sudo apt-get install mysql-server
-$ sudo apt-get install python-mysqldb
-```
-
-### Installing uWSGI
-
-```
-$ sudo pip install uwsgi
-```
-
-### Installing Nginx
-
-```
-$ sudo apt-get install nginx
-```
-
-### Serving with uWSGI and Nginx
-
-Configure ```productscout_uwsgi.ini``` and ```productscout_nginx.conf``` files to reflect the correct server name.
-
-Symlink ```productscout_nginx.conf``` so Nginx can see it:
-```
-$ sudo ln -s /path/to/your/productscout_nginx.conf /etc/nginx/sites-enabled/
-```
-
-Restart Nginx:
-```
-$ sudo service nginx restart
-```
-
-Create directory for storing uWSGI vassals:
-```
-$ sudo mkdir /etc/uwsgi
-$ sudo mkdir /etc/uwsgi/vassals
-```
-
-Symlink ```productscout_uwsgi.ini```
-```
-$ sudo ln -s /path/to/your/productscout_uwsgi.ini /etc/uwsgi/vassals/
-```
-
-Run uWSGI in emperor mode:
-```
-$ uwsgi --emperor /etc/uwsgi/vassals
-```
-
-Make uWSGI startup when the system boots using ```upstart```:
-```
-$ sudo nano /etc/init/uwsgi.conf
-```
-Add:
-```
-description "uWSGI Emperor"
-
-start on runlevel [2345]
-stop on runlevel [!2345]
-
-script
-    . {virtualenv_path}/bin/activate
-    uwsgi --emperor /etc/uwsgi/vassals
-end script
-```
-
-Visit external IP of your VM instance. Voila.
-
-## Optional Environment Variables
-
-1. `DJANGO_CONFIG_DEBUG`: You can set this to any string you want in `bin/activate` of your `virtualenv`. This will force `gulp` command to build the app in debug, which is useful when you have different environment setup in the cloud.
 
 ## Common Issues
 
