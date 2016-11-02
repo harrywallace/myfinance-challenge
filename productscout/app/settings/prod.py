@@ -7,7 +7,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
-from project.settings.base import *
+from settings.base import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -29,4 +29,4 @@ DEFAULT_FILE_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesSt
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'app', 'static')

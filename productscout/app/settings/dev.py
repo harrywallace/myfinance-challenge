@@ -7,10 +7,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
-from project.settings.base import *
+from settings.base import *
 
 # Root directory of the entire project.
-PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 # Directory of the app directory.
 APP_DIR = os.path.join(PROJECT_DIR, 'app')

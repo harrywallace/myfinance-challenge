@@ -17,10 +17,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 # URL config file.
-ROOT_URLCONF = 'project.urls'
+ROOT_URLCONF = 'urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'project.wsgi.application'
+WSGI_APPLICATION = 'wsgi.application'
 
 # Installed apps.
 INSTALLED_APPS = (
@@ -105,7 +105,7 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesSto
 TEMPLATES = [
   {
     'BACKEND': 'django.template.backends.django.DjangoTemplates',
-    'DIRS': [os.path.join(BASE_DIR, 'templates')],
+    'DIRS': [os.path.join(BASE_DIR, 'app', 'templates')],
     'APP_DIRS': False,
     'OPTIONS': {
       'context_processors': [
