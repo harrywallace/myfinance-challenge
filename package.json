@@ -8,7 +8,7 @@
   },
   "scripts": {
     "clean": "gulp clean",
-    "migrate": "python app/manage.py migrate",
+    "migrate": "python productscout/app/manage.py migrate",
     "build:dev": "gulp --debug",
     "build": "gulp",
     "dev": "npm run build:dev -- --watch --serve",
